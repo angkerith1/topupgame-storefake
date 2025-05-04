@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rith GameTopUp - Ultimate Game Top-Up Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    Project - Game Topup By @Rith
+                </div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#topup">TopUp</a>
+                    <a href="#process">How It Works</a>
+                    <a href="#features">Why Us</a>
+                </div>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </div>
+                <button class="toggle-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cart Summary -->
+    <div class="cart-summary" id="cart-summary">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-total">
+            <p>Total: <span id="cart-total">$0.00</span></p>
+        </div>
+        <button class="action-btn cart-checkout">Proceed to Checkout</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Power Up Your Game Instantly</h1>
+                <p>Top up Free Fire and Mobile Legends diamonds with lightning speed and unbeatable prices.</p>
+                <a href="#topup" class="action-btn">Start Top-Up Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main TopUp Section -->
+    <section class="main-topup" id="topup">
+        <div class="container">
+            <div class="topup-container">
+                <!-- Game Selection -->
+                <div class="game-selection">
+                    <h2 class="section-title">Select Your Game</h2>
+                    <div class="game-grid">
+                        <div class="game-item" data-game="freefire">
+                            <img src="img/ff.png" alt="Free Fire">
+                            <h3>Free Fire</h3>
+                            <p>Garena</p>
+                        </div>
+                        <div class="game-item" data-game="mobilelegends">
+                            <img src="img/v1.png" alt="Mobile Legends">
+                            <h3>Mobile Legends</h3>
+                            <p>Moonton</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TopUp Form -->
+                <div class="topup-form">
+                    <form id="topup-form">
+                        <!-- Step 1: Game ID -->
+                        <div class="form-step">
+                            <div class="step-title">
+                                <span class="step-number">1</span>
+                                Enter Game ID
+                            </div>
+                            <div class="form-group">
+                                <label for="userid">Game ID</label>
+                                <div class="id-input-group">
+                                    <input type="text" id="userid" placeholder="Enter your Game ID" required>
+                                    <button type="button" id="check-id" class="action-btn">Verify ID</button>
+                                </div>
+                                <div id="id-status" class="id-status"></div>
+                            </div>
+                            <div class="form-group" id="zone-container" style="display: none;">
+                                <label for="zone">Zone ID (Mobile Legends)</label>
+                                <input type="text" id="zone" placeholder="Enter your Zone ID">
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Select Package -->
+                        <div class="form-step">
+                            <div class="step-title">
+                                <span class="step-number">2</span>
+                                Choose Package
+                            </div>
+                            <div id="ff-packages" class="packages" style="display: none;">
+                                <div class="package-item" data-amount="100" data-price="0.99">
+                                    <img src="/api/placeholder/40/40" alt="100 Diamonds">
+                                    <div class="package-details">
+                                        <h4>100 💎</h4>
+                                        <p>$0.99</p>
+                                    </div>
+                                    <button type="button" class="add-to-cart">Add to Cart</button>
+                                </div>
+                                <div class="package-item" data-amount="310" data-price="2.99">
+                                    <img src="/api/placeholder/40/40" alt="310 Diamonds">
+                                    <div class="package-details">
+                                        <h4>310 💎</h4>
+                                        <p>$2.99</p>
+                                    </div>
+                                    <button type="button" class="add-to-cart">Add to Cart</button>
+                                </div>
+                                <div class="package-item" data-amount="520" data-price="4.99">
+                                    <img src="/api/placeholder/40/40" alt="520 Diamonds">
+                                    <div class="package-details">
+                                        <h4>520 💎</h4>
+                                        <p>$4.99</p>
+                                    </div>
+                                    <button type="button" class="add-to-cart">Add to Cart</button>
+                                </div>
+                                <div class="package-item" data-amount="1060" data-price="9.99">
+                                    <img src="/api/placeholder/40/40" alt="1060 Diamonds">
+                                    <div class="package-details">
+                                        <h4>1060 💎</h4>
+                                        <p>$9.99</p>
+                                    </div>
+                                    <button type="button" class="add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div id="ml-packages" class="packages" style="display: none;">
+                                <div class="package-item" data-amount="86" data-price="1.99">
+                                    <img src="/api/placeholder/40/40" alt="86 Diamonds">
+                                    <div class="package-details">
+                                        <h4>86 💎</h4>
+                                        <p>$1.99</p>
+                                    </div>
+                                    <button type="button" class="add-to-cart">Add to Cart</button>
+                                </div>
+                                <div class="package-item" data-amount="172" data-price="3.99">
+                                    <img src="/api/placeholder/40/40" alt="172 Diamonds">
+                                    <div class="package-details">
+                                        <h4>172 💎</h4>
+                                        <p>$3.99</p>
+                                    </div>
+                                    <button type="button" class="add-to-cart">Add to Cart</button>
+                                </div>
+                                <div class="package-item" data-amount="257" data-price="5.99">
+                                    <img src="/api/placeholder/40/40" alt="257 Diamonds">
+                                    <div class="package-details">
+                                        <h4>257 💎</h4>
+                                        <p>$5.99</p>
+                                    </div>
+                                    <button type="button" class="add-to-cart">Add to Cart</button>
+                                </div>
+                                <div class="package-item" data-amount="514" data-price="11.99">
+                                    <img src="/api/placeholder/40/40" alt="514 Diamonds">
+                                    <div class="package-details">
+                                        <h4>514 💎</h4>
+                                        <p>$11.99</p>
+                                    </div>
+                                    <button type="button" class="add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div id="package-loading" class="loading">
+                                <div class="spinner"></div>
+                                <p>Loading packages...</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Contact Info -->
+                        <div class="form-step">
+                            <div class="step-title">
+                                <span class="step-number">3</span>
+                                Contact Information
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="Enter your email for receipt" required>
+                            </div>
+                        </div>
+
+                        <div id="form-loading" class="loading">
+                            <div class="spinner"></div>
+                            <p>Processing your order...</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="process-steps" id="process">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Select Game</h3>
+                    <p>Choose Free Fire or Mobile Legends</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>Enter ID</h3>
+                    <p>Input and verify your game ID</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Add to Cart</h3>
+                    <p>Select your diamond package</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Checkout</h3>
+                    <p>Pay securely and get diamonds instantly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose EZ GameTopUp</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Instant Delivery</h3>
+                    <p class="feature-description">Diamonds delivered in seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Secure Payments</h3>
+                    <p class="feature-description">Encrypted transactions for safety.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3 class="feature-title">Best Prices</h3>
+                    <p class="feature-description">Unbeatable rates and deals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="feature-description">Help whenever you need it.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="feature-title">No Sign-Up</h3>
+                    <p class="feature-description">Top up without an account.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 class="feature-title">Bonus Offers</h3>
+                    <p class="feature-description">Exclusive promotions for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>EZ GameTopUp</h3>
+                    <p>Your ultimate destination for fast, secure, and affordable game top-ups. Power up now!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#topup">Top Up</a></li>
+                        <li><a href="#process">How It Works</a></li>
+                        <li><a href="#features">Why Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 EZ GameTopUp. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <div class="check-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h3>Top-Up Successful!</h3>
+                <p>Your diamonds have been delivered!</p>
+            </div>
+            <div class="modal-body">
+                <p><strong>Game:</strong> <span id="modal-game">Free Fire</span></p>
+                <p><strong>Player ID:</strong> <span id="modal-id">1234567890</span></p>
+                <p><strong>Items:</strong> <span id="modal-items">100 Diamonds</span></p>
+                <p><strong>Total Paid:</strong> <span id="modal-amount">$0.99</span></p>
+                <p><strong>Transaction ID:</strong></p>
+                <div class="transaction-id" id="modal-transaction">TX-2025050412345678</div>
+                <p>Receipt sent to your email.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="action-btn" id="modal-ok">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Chat Placeholder -->
+    <div class="live-chat">
+        <button class="chat-btn"><i class="fas fa-comment-dots"></i> Chat with Us</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
